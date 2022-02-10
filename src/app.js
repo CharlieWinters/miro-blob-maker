@@ -5,7 +5,7 @@ let colour = '2196F3';
 let opacity = 100;
 let seed = 1234;
 
-/** Initialises UI with first SVG blob */
+/** Initialises UI with first SVG blob, adds controls and listeners */
 async function init() {
   console.log('initialising module');
 
@@ -45,23 +45,13 @@ async function init() {
         .then((response) => response.text())
         .then((data) => {
           seed = data;
-          svgBlob.src = `
-            /blob?seed=${seed}
-            &edges=${edges}
-            &colour=${colour}
-            &opacity=${opacity}
-          `;
+          setSvgSource();
         });
   };
 
   sliderOpacity.oninput = function() {
     opacity = this.value;
-    svgBlob.src = `
-      /blob?seed=${seed}
-      &edges=${edges}
-      &colour=${colour}
-      &opacity=${opacity}
-    `;
+    setSvgSource();
   };
 
   colorPicker.addEventListener('change', watchColorPicker, false);
@@ -74,12 +64,7 @@ async function init() {
   function watchColorPicker(event) {
     // colour hash doesn't play well in urls so stripping hash
     colour = event.target.value.split('#')[1];
-    svgBlob.src = `
-      /blob?seed=${seed}
-      &edges=${edges}
-      &colour=${colour}
-      &opacity=${opacity}
-    `;
+    setSvgSource();
   }
 
   /** Regenerates blob with defined edges */
@@ -88,13 +73,18 @@ async function init() {
         .then((response) => response.text())
         .then((data) => {
           seed = data;
-          svgBlob.src = `
-            /blob?seed=${seed}
-            &edges=${edges}
-            &colour=${colour}
-            &opacity=${opacity}
-          `;
+          setSvgSource();
         });
+  }
+
+  /** Regenerates blob with defined edges */
+  function setSvgSource() {
+    svgBlob.src = `
+      /blob?seed=${seed}
+      &edges=${edges}
+      &colour=${colour}
+      &opacity=${opacity}
+    `;
   }
 }
 
