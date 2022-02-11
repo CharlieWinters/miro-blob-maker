@@ -3,12 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://unpkg.com/mirotone/dist/styles.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/mirotone/dist/styles.css" />
     <style>
-      .slidecontainer {
-        width: 100%;
-      }
-
       .slider {
         -webkit-appearance: none;
         width: 100%;
@@ -16,8 +12,8 @@
         background: #d3d3d3;
         outline: none;
         opacity: 0.7;
-        -webkit-transition: .2s;
-        transition: opacity .2s;
+        -webkit-transition: 0.2s;
+        transition: opacity 0.2s;
       }
 
       .slider:hover {
@@ -29,17 +25,17 @@
         appearance: none;
         width: 25px;
         height: 25px;
-        background: #04AA6D;
+        background: #04aa6d;
         cursor: pointer;
       }
 
       .slider::-moz-range-thumb {
         width: 25px;
         height: 25px;
-        background: #04AA6D;
+        background: #04aa6d;
         cursor: pointer;
       }
-      </style>
+    </style>
     <script src="https://miro.com/app/static/sdk/v2/miro.js"></script>
   </head>
   <body>
@@ -49,39 +45,48 @@
       </div>
       <div class="cs1 ce12">
         <div>
-          <img class="miro-draggable" id= "svg-blob" src="/blob" />
+          <img class="miro-draggable" id="svg-blob" src="/blob" />
         </div>
       </div>
       <div class="cs2 ce3">
-        <p>
-          Complexity
-        </p>
+        <p>Complexity</p>
       </div>
       <div class="cs6 ce11">
-        <input type="range" min="3" max="100" value="5" class="slider" id="complexity">
+        <input
+          type="range"
+          min="3"
+          max="100"
+          value="5"
+          class="slider"
+          id="complexity"
+        />
       </div>
       <div class="cs2 ce3">
-        <p>
-          Opacity
-        </p>
+        <p>Opacity</p>
       </div>
       <div class="cs6 ce11">
-        <input type="range" min="3" max="100" value="100" class="slider" id="opacity">
+        <input
+          type="range"
+          min="3"
+          max="100"
+          value="100"
+          class="slider"
+          id="opacity"
+        />
       </div>
       <div class="cs2 ce3">
         <label for="colour-picker">Colour</label>
       </div>
       <div class="cs6 ce11">
-        <input type="color" id="colorPicker" name="colour-picker" 
-               value="#2196F3">
+        <input
+          type="color"
+          id="colorPicker"
+          name="colour-picker"
+          value="#2196F3"
+        />
       </div>
       <div class="cs1 ce12">
-        <a
-          class="button button-primary"
-          id="regenerate"
-        >
-          Regenerate
-        </a>
+        <a class="button button-primary" id="regenerate"> Regenerate </a>
       </div>
     </div>
     <script type="module" src="src/app.js"></script>
